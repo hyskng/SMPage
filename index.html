@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>おためしページ</title>
+        <meta charset="utf-8">
+        <script>
+            function enterNum()
+            {
+                var NumVar = document.getElementById("Num");
+                if(NumVar.value == "46497")
+                {
+                    alert("あってるのだ！")
+                    alert("LINEで GHおけまる って送って！")
+                }
+                else
+                {
+                    alert("ちがうのだ！")
+                }
+            }
+        </script>
+    </head>
+    <body style="overflow: hidden;">
+        <br>
+        <div style="text-align: center;font-size: 50px;">どうですかぁぁ？</div>
+        <div style="text-align: center;font-size: 32px;">
+            <img src="Number.png"><br>
+            上の画像に書かれている番号を入れてね!<br>
+            <input id="Num" type="number" style="height: 30px;width:250px;font-size: 28px;text-align: center;"><br>
+            <button type="button" style="height: 30px;width:250px;font-size: 22px;" onclick="enterNum()">確定</button>
+        </div>
+    </body>
+</html>
