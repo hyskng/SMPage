@@ -1,31 +1,89 @@
 <html>
     <head>
-        <title>おためしページ</title>
+        <title>SMページ セットアップ</title>
         <meta charset="utf-8">
         <script>
-            function enterNum()
+            var setupNum = 0
+            function NextSetup()
             {
-                var NumVar = document.getElementById("Num");
-                if(NumVar.value == "46497")
+                document.getElementById('setup'+setupNum.toString()).style.display="none"
+                setupNum += 1
+                document.getElementById('setup'+setupNum.toString()).style.display="block"
+
+                if(setupNum == 3)
                 {
-                    alert("あってるのだ！")
-                    alert("LINEで GHおけまる って送って！")
+                    var W = document.getElementById('INum1R').value*20
+                    var H = document.getElementById('INum2R').value*20
+                    
+                    document.getElementById('Result').innerText=W.toString()+" "+H.toString()
                 }
-                else
-                {
-                    alert("ちがうのだ！")
-                }
+            }
+            function Num1WC()
+            {
+                document.getElementById('INum1W').style.width = document.getElementById('INum1R').value*20
+            }
+            function Num2HC()
+            {
+                document.getElementById('INum2H').style.height = document.getElementById('INum2R').value*20
+            }
+            function Num2MainStart()
+            {
+                document.getElementById('Num2Hide1').style.display = "none"
+                document.getElementById('Num2Hide2').style.display = "none"
+                document.getElementById('Num2Main').style.display = "block"
             }
         </script>
     </head>
-    <body style="overflow: hidden;">
-        <br>
-        <div style="text-align: center;font-size: 50px;">どうですかぁぁ？</div>
-        <div style="text-align: center;font-size: 45px;">
-            <img src="Number.png" style="height:180px;width:720px"><br>
-            上の画像に書かれている番号を入れてね!<br>
-            <input id="Num" type="number" style="height: 60px;width:680px;font-size: 42px;text-align: center;"><br>
-            <button type="button" style="height: 45px;width:600px;font-size: 34px;" onclick="enterNum()">確定</button>
+    <body style="background-color: aquamarine;" id="Body">
+        <div id="setup0" style="text-align: center">
+            <br><br><br><br>
+            <b style="font-size: 60px;color:blue;">SMページ セットアップ</b>
+            <div style="font-size: 28px;">
+                このページでSMページをセットアップします！<br>
+                SMページ(三留さんページ)を<br>指示に従いながら三留さん好みにセットアップしてね！<br>
+                下のボタンを押してセットアップを開始してね！ <br>
+                <button type="button" style="width:500px;height:120px;font-size:52px;color:orangered;background-color:greenyellow;" onclick="NextSetup()">セットアップの開始</button>
+            </div>
+        </div>
+        <div id="setup1" style="text-align: center;display: none;">
+            <br><br>
+            <b style="font-size: 50px;color:blue;">横の長さの設定</b>
+            <div style="font-size: 28px;">
+                画面の横の長さと下の赤い四角の横の長さが<br>同じになるように下のスライドバーを動かしてね！
+                <br><br><br>
+                <img src="WidthLine.png" id="INum1W" style="width:50px;height:50px">
+                <br><br>
+                <input type="range" id="INum1R" style="width: 500px;" value="0" onchange="Num1WC()"> <br><br>
+                <button type="button" style="width:400px;height:80px;font-size:42px;color:orangered;background-color:greenyellow;" onclick="NextSetup()">決定して次へ</button>
+            </div>
+        </div>
+        <div id="setup2" style="text-align: center;display: none;">
+            <br>
+            <b id="Num2Hide1" style="font-size: 50px;color:blue;">縦の長さの設定</b>
+            <div style="font-size: 28px;">
+                <div id="Num2Hide2">
+                    画面の縦の長さと赤い四角の縦の長さが<br>同じになるようにスライドバーを動かしてね！<br>
+                    下のボタンを押してスタート(この説明が非表示になるよ)<br>
+                    <button type="button" style="width: 300px;height:60px;font-size: 30px;" onclick="Num2MainStart()">スタート</button>
+                    <br><br><br>
+                </div>
+                <div id="Num2Main" style="display:none;">
+                    <img src="WidthLine.png" id="INum2H" style="width:50px;height:50px">
+                    <br><br>
+                    <input type="range" id="INum2R" style="width: 500px;position:fixed;bottom: 50;left: 100px;" value="0" onchange="Num2HC()"> <br><br>
+                    <button type="button" style="width:400px;height:80px;font-size:42px;color:orangered;background-color:greenyellow;position: fixed;bottom:50;right:100px" onclick="NextSetup()">決定して次へ</button>
+                </div>
+            </div>
+        </div>
+        <div id="setup3" style="text-align: center;display: none;">
+            <br><br><br>
+            <div style="font-size: 30px;">
+                セットアップNo.1が完了しました。<br>
+                (続きは次回やるよ！)<br>
+                下の結果をLINEで送ってね！(コピーはやめた)<br>
+                <br><br><br>
+                <span style="font-size: 60px;"><div id="Result">___</div></span>
+            </div>
         </div>
     </body>
 </html>
